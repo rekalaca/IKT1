@@ -512,7 +512,7 @@ section {
 }
 
 .section-title {
-  text-align: justify;
+  text-align:left
   padding-bottom: 30px;
 }
 
@@ -1810,3 +1810,20 @@ section {
 .bal{
   text-align: left;
 }
+.youtube-container {
+  border: 1px solid #CCCCCC;
+  height: 0;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  position: relative;
+  }
+  
+  .youtube-container iframe, .youtube-container object, .youtube-container embed {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  }
