@@ -26,8 +26,6 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -46,6 +44,7 @@
           <li><a class="nav-link scrollto" href="#ism">A feladat</a></li>
           <li><a class="nav-link scrollto" href="#dok">Dokumentálás</a></li>
           <li><a class="nav-link scrollto" href="#program">Programkód</a></li>
+          <li><a class="nav-link scrollto" href="#jelentkezz">Jelentkezés!</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -63,9 +62,10 @@
           <h1>Ledes villogó készítése</h1>
           <h2>Arduino egység programozásával</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#ism" class="btn-get-started scrollto">ugrás a feladatra</a>
+            <a href="#ism" class="btn-get-started scrollto">Ugrás a feladatra!</a>
+            <a href="#jelentkezz" class="btn-get-started scrollto">Jelentkezz Szakkörre!</a>
             <a href="#program" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Megnézem a
-                videót!</span></a>
+                videót!</span></a>   
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -230,6 +230,65 @@
             A gombot úgy kötjük be, hogy az egyik oldalára megy az 5V és a GND a 10 Ohm-os ellenálláson át, a másik
             oldalára meg bekötjük a digit pin 12-es csatlakozóját. Ezek után nem marad más, csak a kódolás, aztán már
             működik is az áramkör…
+            <br><br>
+            De pár gondolat még a kódról:
+          </p>
+          <p>
+            Mi ez a kód?
+            A programkód két részből áll!
+            Az egyik rész a void setup
+            a másik a void loop rész.
+            <br>
+            A void setup a beállítás.
+            Ehhez ne nyúlj:
+            void setup() {
+            <br>
+            Itt beállítjuk melyik pint akarjuk használni (pl. a 10-est, ami a piros változó nevet kapta):
+            pinMode(piros, OUTPUT);
+            Az OUTPUT azt jelenti, hogy kimenetnek állítottuk be!
+            A kód végét a kapcsos zárójel zárja: }
+            <br>
+            Ezután jön a void loop rész:
+            <br>
+            A számítógép hasonlóan olvassa a kódot, mint az ember. Fentről lefelé, balról jobbra.
+            A loop kód azt jelenti, hogy amikor a végére ér, újra az elejére ugrik, és újra, és újra elolvassa, és
+            végrehajtja. Tehát amíg a setup (beállítás) részt egyszer olvassa el, addig a loop részt végtelenül
+            ismételgeti.
+            <br>
+            A void loop rész az utasítást tartalmazza.
+            <br>
+            Az If azaz a feltétel függvény:
+            <br>
+            Most nézzük a kódból ezt a részt:
+            <br><br>
+            if (digitalRead (gomb) == HIGH) {
+            <br>delay(1000);
+            <br>pirosra();
+            <br>delay(4000);
+            <br>zoldre();
+            <br>}
+            <br><br>
+            Ez egy függvény. Onnan tudod, hogy függvényről van szó, hogy sima zárójeles része, amiben a függvény
+            beállítása van, és kapcsos zárójeles rész az utasításait tartalmazza. A setup, és a loop rész is függvény.
+            <br><br>
+            A delay(1000); A delay várakozást jelent, azt is megmondjuk, hogy 1000 mikroszekundum, azaz 1 másodpercig
+            várjon a program, és csak utána lépjen a következő parancsra. A delay értéke minimum 1, azaz a másodperc egy
+            ezred értéke lehet, a maximális pedig 65535, azaz kicsivel több, mint 65 másodperc lehet.
+            <br><br>
+            digitalWrite(sarga, HIGH); A write itt megint azt jelenti, hogy itt most tápfeszültséget fogunk ki-be
+            kapcsolgatni valami számára, azaz bit-eket írunk. A High (magas) Azt jelenti, hogy logikailag magas
+            állapotban van a kivezetés, ami bit értéken 1-nek felel meg, vagyis a tápfeszültséget kapcsoljuk, a rajta
+            lévő LED világítani fog.
+            <br><br>
+            A digitalWrite(zold, LOW); -nál az új elem az, hogy itt magas helyett LOW, vagyis alacsony logikai szint
+            van, vagyis bit értéken 0, tehát kikapcsoljuk a tápfeszültséget, a LED nem világít.
+            Azután a program egy újbóli egy másodperces várakozás után a következő kivezetés be-ki kapcsolására tér rá,
+            majd, amikor a kódnak a végére ér, a kódot itt is a kapcsos zárójel zárja, majd a loop (hurok) parancs miatt
+            a loop-ban lévő rész újra és újra elolvasásra, és végrehajtásra kerül.
+            (A dokumentáció egy része a <a href="https://kodolj.blogspot.com/p/5resz.html"
+                target="_blank">kodolj.blogspot oldalról idézett.</a>)
+
+
           </p>
 
         </div>
@@ -246,7 +305,7 @@
 
         <div class="row content">
           <div class="col-lg-6">
-            <p class="bal">
+            <p class="bali">
               A közlekedési lámpánk modelljének a kódsorozata:
               <br>
               <img src="assets/img/kod.JPG" class="img-fluid animated" alt="">
@@ -257,14 +316,49 @@
           <div class="col-lg-6">
             <p>
               Video a működésről:
-              <br><br>              
+              <br><br>
             </p>
             <div class=“youtube-container”>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/2vLM8yXatuo"
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/2vLM8yXatuo"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
-              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <section id="jelentkezz" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Jelentkezz Szakkörünkre!</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <p class="bal">
+              <br><br>
+              Ha megtetszett az Arduino programozás, vagy már most is foglalkozol vele, de szeretnél benne jobb lenni,
+              fejlődni...
+              <br>
+              Ne habozz! Jelentkezz szakkörünkre!
+              <br>
+              Oktatóink szakmai felkészültsége kimagasló! Nálunk elsajátíthaszt akár több programozási nyelvet...
+              <br><br>
+              <img src="assets/img/ard.jpg" class="img-fluid animated" alt="">
+            </p>
+            <p>
+              Bővebb információt jelentkezésed után az általad megadott e-mail címre küldünk!
+              <br><br>
+              Jelentkezz még ma !
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <script type="text/javascript" src="https://form.jotform.com/jsform/211323333033034"></script>
           </div>
 
         </div>

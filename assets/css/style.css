@@ -1783,11 +1783,11 @@ section {
 }
 
 #footer .copyright {
-  float:right;
+  text-align: center;
 }
 
 #footer .credits {
-  float: right;
+  text-align: center;
   font-size: 13px;
 }
 
@@ -1809,6 +1809,10 @@ section {
   }
 }
 .bal{
+  text-align:justify;
+  width: 350px;
+}
+.bali{
   text-align: left;
 }
 .youtube-container {
